@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars table</title>
+</head>
+<body>
+<form th:method="GET" th:action="@{/cars}">
+    <label for="count">Number of cars in the table</label>
+    <input name="count" type="number" id="count"/>
+    <input type="submit" value="Show"/>
+</form>
+<h2>Cars table</h2>
+<table>
+    <thead>
+        <tr>
+            <th scope="col">Model</th>
+            <th scope="col">Car brand</th>
+            <th scope="col">Power</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="car :${cars}">
+            <td th:text="${car.getModel()}"/>
+            <td th:text="${car.getCarBrand()}"/>
+            <td th:text="${car.getPower()}"/>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
